@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gemini-terminal"
+version = "1.0.0"
+description = "A terminal tool for communicating with and logging conversations using Gemini AI."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    {name = "Berk Acunas", email = "info@deponessoft.com"}
+]
+dependencies = [
+    "python-dotenv==1.2.2",
+    "google-genai==1.68.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/DeponesLabs/Gemini-Terminal"
+"Bug Tracker" = "https://github.com/DeponesLabs/Gemini-Terminal/issues"
+
+[project.scripts]
+gterminal = "gterminal.main:main" 
+
+[tool.setuptools.packages.find]
+where = ["src/"]
