@@ -8,14 +8,14 @@ from google.genai import types
 
 load_dotenv()
 
-from gterminal.models import GeminiModel
-from gterminal.enums import GeminiModelType
+from pollux.models import GeminiModel
+from pollux.enums import GeminiModelType
 
 class GeminiClient:
     
     today = datetime.now().strftime("%Y_%m_%d-%I_%M_%S_%p")
     api_key = os.environ.get("GEMINI_API_KEY")
-    daily_log_file = f"gemini_records_{today}.txt"
+    daily_log_file = f"chat_records/gemini_records_{today}.txt"
         
     def __init__(self):
 

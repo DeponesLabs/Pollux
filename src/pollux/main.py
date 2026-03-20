@@ -1,4 +1,4 @@
-from gterminal.clients import GeminiClient
+from pollux.clients import GeminiClient
 
 def main():
     
