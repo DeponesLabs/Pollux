@@ -4,4 +4,4 @@ dist/
 *.egg-info/
 .env
 chat_records/
-pollux_pro/
+
