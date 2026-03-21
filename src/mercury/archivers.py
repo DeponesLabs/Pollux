@@ -7,10 +7,10 @@ from docx.shared import RGBColor, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 class BaseArchiver(ABC):
+        
+    def __init__(self, filename):
     
-    def __init__(self, base_filename):
-    
-        self.filename = base_filename
+        self.filename = filename        
 
     @abstractmethod
     def append_message(self, role: str, text: str):
@@ -23,9 +23,10 @@ class BaseArchiver(ABC):
 
 class DocxArchiver(BaseArchiver):
     
-    def __init__(self, base_filename, heading='Pollux AI - Session Record', level=0):
-        
-        super().__init__(f"{base_filename}.docx")
+    def __init__(self, filename, heading='Pollux AI - Session Record', level=0):
+    
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        super().__init__(f"{filename}-{timestamp}.docx")
         
         self.doc = Document()
         self.doc.add_heading(heading, level)
@@ -46,8 +47,8 @@ class DocxArchiver(BaseArchiver):
         self.doc.save(self.filename)
 
 class DocxArchiver2(BaseArchiver):
-    def __init__(self, base_filename):
-        super().__init__(f"{base_filename}.docx")
+    def __init__(self, filename):
+        super().__init__(f"{filename}.docx")
         self.doc = Document()
         
         # 1. Ana Başlık (Ortalanmış ve Şık)
@@ -95,9 +96,9 @@ class DocxArchiver2(BaseArchiver):
 
 class TxtArchiver(BaseArchiver):
     
-    def __init__(self, base_filename):
+    def __init__(self, filename):
         
-        super().__init__(f"{base_filename}.txt")
+        super().__init__(f"{filename}.txt")
 
     def append_message(self, role: str, text: str):
         
@@ -113,9 +114,9 @@ class TxtArchiver(BaseArchiver):
 
 class JsonArchiver(BaseArchiver):
     
-    def __init__(self, base_filename):
+    def __init__(self, filename):
         
-        super().__init__(f"{base_filename}.json")
+        super().__init__(f"{filename}.json")
         
         self.history = []
 
