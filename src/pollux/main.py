@@ -1,18 +1,29 @@
 import os
+from datetime import datetime
 from dotenv import load_dotenv
+from pathlib import Path
 
 from pollux.clients import PolluxClient
-from mercury.archivers import DocxArchiver
+from pollux.archivers import DocxArchiver
+
 
 load_dotenv()
 
+# load_env_vars
+CHAT_DIR = os.environ.get("CHAT_RECORDS_DIR")
+DOCX_BASE= os.environ.get("DOCX_BASE")
+MD_BASE= os.environ.get("MD_BASE")
+
 def main():
     
-    filename = os.environ.get("CHAT_RECORDS_PATH")
+    filename = "pollux-chat"
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    filename = f"{filename}-{timestamp}"    
+    
+    p = CHAT_DIR / Path(filename)
     
     pollux = PolluxClient()
-    # pollux.export_models_to_json()
-    archiver = DocxArchiver(filename=filename)
+    archiver = DocxArchiver(filename=p.absolute())
     pollux.exec_chat(archiver=archiver)
    
 

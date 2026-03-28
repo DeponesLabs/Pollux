@@ -30,12 +30,12 @@
             "request": "launch",
             "module": "pytest",
             "args": [
-                "-s",
-                "-v",
+                "-s",  // Stdout/Stdin kilidini açar
+                "-v",  // Opsiyonel: Test çıktılarını daha okunaklı yapar
                 "${file}"
             ],
             "console": "integratedTerminal",
-            "justMyCode": false,
+            "justMyCode": true,  // Kütüphanelerde boğulmayı engeller
             "env": {
                 "PYTHONPATH": "${workspaceFolder}/src"
             }

@@ -1,7 +1,13 @@
 .venv/
+.venv_dev/
+
 __pycache__/
+
 dist/
 *.egg-info/
-.env
-chat_records/
 
+.env
+
+chat_records/
+test/
+test/DATA
