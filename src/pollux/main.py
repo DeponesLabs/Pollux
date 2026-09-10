@@ -20,7 +20,7 @@ def main():
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     filename = f"{filename}-{timestamp}"    
     
-    p = CHAT_DIR / Path(filename)
+    p = Path(CHAT_DIR) / Path(filename)
     
     pollux = PolluxClient()
     archiver = DocxArchiver(filename=p.absolute())
