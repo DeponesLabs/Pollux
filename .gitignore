@@ -3,10 +3,11 @@
 
 __pycache__/
 
-build/
 uv.lock
+.idea
 
 dist/
+build/
 *.egg-info/
 
 .env
