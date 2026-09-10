@@ -14,6 +14,26 @@ Named after one of the twin stars in the **Gemini constellation**, Pollux serves
 * **Granular Safety Control:** Direct access to Google’s safety settings, allowing developers to toggle filtering thresholds (e.g., `BLOCK_NONE`).
 * **Automated Cataloging:** Automatically fetches and exports available model metadata to a structured JSON database for offline reference.
 * **Developer-First Design:** Optimized for low latency and high readability, making it an ideal "Proof of Work" for AI integration.
+* **MCP Tool Access:** Can optionally connect to an MCP server and invoke tools such as the VizieR star catalog lookup.
+
+---
+
+## MCP Tool Integration
+
+Pollux can optionally call a local MCP server over stdio:
+
+```python
+from pollux.clients import PolluxClient
+
+client = PolluxClient(
+    mcp_server_command="python",
+    mcp_server_args=["/path/to/star_catalog_server.py"],
+)
+
+print(client.query_star_catalog("Betelgeuse"))
+```
+
+The server can expose a `query_star_catalog` tool with the signature shown in the project docs; Pollux will call it through the configured MCP transport.
 
 ---
 
